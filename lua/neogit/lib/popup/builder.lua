@@ -56,7 +56,7 @@ local M = {}
 ---@field id string
 ---@field key string
 ---@field name string
----@field entry string
+---@field entry ConfigEntry
 ---@field value string
 ---@field type string
 

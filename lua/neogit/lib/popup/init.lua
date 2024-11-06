@@ -156,9 +156,13 @@ function M:set_option(option)
   -- Prompt user to select from predetermined choices
   if option.choices then
     if not option.value or option.value == "" then
+      local eventignore = vim.o.eventignore
+      vim.o.eventignore = "WinLeave"
       local choice = FuzzyFinderBuffer.new(option.choices):open_async {
         prompt_prefix = option.description,
       }
+      vim.o.eventignore = eventignore
+
       if choice then
         option.value = choice
       else
